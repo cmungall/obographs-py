@@ -30,14 +30,16 @@ def test_obj():
                       'obj': 'B'}
                  ]
              }
-         ]}
+         ]},
+        {'type':'CLASS'}
     )
     nx.draw(G)
     plt.savefig("examples/simple_obj.png") # save as png
+    assert 1==1
 
 def test_parse():
     import obographs.graphmaker
-    G = obographs.graphmaker.convert_json_file("tests/nucleus.json")
+    G = obographs.graphmaker.convert_json_file("tests/nucleus.json", {'type':'CLASS'})
     labelmap = nx.get_node_attributes(G,'lbl')
     nx.draw_networkx(G, labels=labelmap)
     plt.savefig("examples/nucleus.png") # save as png
